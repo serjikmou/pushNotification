@@ -26,7 +26,7 @@ async function send() {
 
   // Send Push Notification
   console.log("Sending Push...");
-  await fetch("https://push-notification-tawny.vercel.app/subscribe", {
+  await fetch("http://localhost:3000/subscribe", {
     method: "POST",
     body: JSON.stringify(subscription),
     headers: {
