@@ -31,16 +31,18 @@ app.use(function (req, res, next) {
   next();
 });
 
-const publicVapidKey = "your-public-vapid-key"; // REPLACE_WITH_YOUR_KEY
-const privateVapidKey = "your-private-vapid-key"; //REPLACE_WITH_YOUR_KEY
+const publicVapidKey =
+  "BPPsaQD6XUBcleOncy3YYBQMhrTxYc88kKb8nuvB8K1K5wtWIBIjC2YtXrN4eOyhmY_V2cjlIiRTP79X8dA7pfY"; // REPLACE_WITH_YOUR_KEY
+const privateVapidKey = "f70-RKzeA40Nfu35XiJhgTFjr6Fd2qQh-kjwSaHG5Wg"; //REPLACE_WITH_YOUR_KEY
 
 app.post("/subscribe", (req, res) => {
+  console.log(req.body);
   // Get pushSubscription object
   const subscription = req.body;
   const settings = {
     web: {
       vapidDetails: {
-        subject: "mailto: <jeffeverhart383@gmail.com>", // REPLACE_WITH_YOUR_EMAIL
+        subject: "mailto: <serjikmousavi@gmail.com>", // REPLACE_WITH_YOUR_EMAIL
         publicKey: publicVapidKey,
         privateKey: privateVapidKey,
       },
@@ -56,12 +58,13 @@ app.post("/subscribe", (req, res) => {
   const push = new PushNotifications(settings);
 
   // Create payload
-  const payload = { title: "Notification from Knock" };
+  const payload = { title: "salam", body: "khobi", color: "#ffff" };
   push.send(subscription, payload, (err, result) => {
     if (err) {
       console.log(err);
     } else {
       console.log(result);
+      res.send("ok");
     }
   });
 });

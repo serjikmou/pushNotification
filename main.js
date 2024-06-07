@@ -1,4 +1,5 @@
-const publicVapidKey = "your-public-vapid-key"; // REPLACE_WITH_YOUR_KEY
+const publicVapidKey =
+  "BPPsaQD6XUBcleOncy3YYBQMhrTxYc88kKb8nuvB8K1K5wtWIBIjC2YtXrN4eOyhmY_V2cjlIiRTP79X8dA7pfY"; // REPLACE_WITH_YOUR_KEY
 
 // Check for service worker
 if ("serviceWorker" in navigator) {
@@ -20,6 +21,7 @@ async function send() {
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
   });
+  console.log(subscription);
   console.log("Push Registered...");
 
   // Send Push Notification
